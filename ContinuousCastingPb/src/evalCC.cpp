@@ -3,17 +3,17 @@
 
 namespace cc {
 
-void EvalCC::operator()(Solution & solution) {
+  void EvalCC::operator()(Solution & solution) {
     GlobalParameters p;
 
     p.preferences = solution;
 
     artis::common::RootCoordinator <
-        DoubleTime, artis::pdevs::Coordinator <
-            DoubleTime,
-            RootGraphManager,
-            GlobalParameters >
-        > rc(0, 4800, "root", p, artis::common::NoParameters());
+      DoubleTime, artis::pdevs::Coordinator <
+	DoubleTime,
+		    RootGraphManager,
+		    GlobalParameters >
+      > rc(0, 4800, "root", p, artis::common::NoParameters());
 
     rc.attachView("CC", new ::MyView());
 
@@ -25,6 +25,6 @@ void EvalCC::operator()(Solution & solution) {
     values.back().second(move_number);
 
     solution.fitness(move_number);
-}
+  }
 
 } // namespace cc
